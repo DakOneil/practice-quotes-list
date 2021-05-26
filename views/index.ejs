@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Quotes Project</title>
+</head>
+<body>
+    <h1>Quotes List</h1>
+    <ul>
+        <% for (let i = 0 ; i < info.length ; i++) { %>
+        <li>
+            <% if (info[i].liked === true) {%>
+            <span class='q liked'><%= info[i].quote %></span>
+            <% } else { %>
+            <span class='q'><%= info[i].quote %></span>
+            <% } %>
+            <span><%= ' - ' + info[i].author %></span>
+            <span class='del'><%= 'remove' %></span>
+        </li>
+        <% } %>
+    </ul>
+    <h2>Number of quotes liked: <%= totalLikes %></h2>
+    <form action="/addQuote" method="POST">
+        <input type="text" placeholder="What is the quote?" name="quoteItem">
+        <input type="text" placeholder="Who said it?" name="authorItem">
+        <input type="submit">
+    </form>
+    <script src="/js/main.js"></script>
+</body>
+</html>

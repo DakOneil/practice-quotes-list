@@ -27,6 +27,7 @@ app.get('/', async (req,res)=> {
     .then(data=>{
         res.render('index.ejs', {info: data})
     })
+    .catch(err=> console.log(err))
 })
 
 app.post('/addQuote', (req, res)=>{

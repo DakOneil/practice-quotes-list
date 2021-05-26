@@ -20,9 +20,13 @@ app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
 app.get('/', async (req,res)=> {
-    const quoteItems = await db.collection('quotes').find().toArray()
-    const quoteLikes = await db.collection('quotes').countDocuments({ liked: true})
-    res.render('index.ejs', {info: quoteItems, totalLikes: quoteLikes})
+    // const quoteItems = await db.collection('quotes').find().toArray()
+    // const quoteLikes = await db.collection('quotes').countDocuments({ liked: true})
+    // res.render('index.ejs', {info: quoteItems, totalLikes: quoteLikes})
+    db.collection('quotes').find().toArray()
+    .then(data=>{
+        res.render('index.ejs', {info: data})
+    })
 })
 
 app.post('/addQuote', (req, res)=>{
